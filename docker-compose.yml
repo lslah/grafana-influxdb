@@ -19,8 +19,10 @@ services:
     gathering:
         build: gathering
         environment:
+            - INFLUXDB_HOST=influxdb
             - INFLUXDB_USER
             - INFLUXDB_PASS
+            - INFLUXDB_DB
         volumes:
             - ./gathering/:/home/py/gathering
         command: ["python", "/home/py/mem.py"]

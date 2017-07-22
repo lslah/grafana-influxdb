@@ -11,14 +11,13 @@ import subprocess
 import os
 from threading import Timer
 
-IP = "influxdb"        # The IP of the machine hosting your influxdb instance
-DB = "wadus"               # The database to write to, has to exist
-USER = os.getenv('INFLUXDB_USER')
-PASSWORD = os.getenv('INFLUXDB_PASS')
-TIME = 0.1                  # Delay in seconds between two consecutive updates
+INFLUX_HOST = os.getenv('INFLUXDB_HOST')
+INFLUX_DB = os.getenv('INFLUXDB_DB')
+INFLUX_USER = os.getenv('INFLUXDB_USER')
+INFLUX_PASS = os.getenv('INFLUXDB_PASS')
 
 def send(data):
-    r = requests.post("http://%s:8086/write?db=%s" %(IP, DB), auth=(USER, PASSWORD), data=data)
+    r = requests.post("http://%s:8086/write?db=%s" %(INFLUX_HOST, INFLUX_DB), auth=(INFLUX_USER, INFLUX_PASS), data=data)
     if r.status_code != 204:
         print("Failed to add point to influxdb (%d) - aborting." % r.status_code)
         sys.exit(1)
