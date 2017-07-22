@@ -4,8 +4,6 @@
 # Attention, the non-core library 'requests' is used. You'll need to install it first:
 # http://docs.python-requests.org/en/master/user/install/
 
-import json
-import math
 import requests
 import sys
 import psutil
