@@ -10,12 +10,13 @@ import requests
 import sys
 import psutil
 import subprocess
+import os
 from threading import Timer
 
 IP = "influxdb"        # The IP of the machine hosting your influxdb instance
 DB = "wadus"               # The database to write to, has to exist
-USER = "admin"             # The influxdb user to authenticate with
-PASSWORD = "admin"  # The password of that user
+USER = os.getenv('INFLUXDB_USER')
+PASSWORD = os.getenv('INFLUXDB_PASS')
 TIME = 0.1                  # Delay in seconds between two consecutive updates
 
 def send(data):

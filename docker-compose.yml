@@ -19,6 +19,9 @@ services:
             - 8083:8083
     gathering:
         build: gathering
+        environment:
+            - INFLUXDB_USER
+            - INFLUXDB_PASS
         volumes:
             - ./gathering/:/home/py/gathering
         command: ["python", "/home/py/mem.py"]
