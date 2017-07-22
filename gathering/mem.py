@@ -42,11 +42,3 @@ def ping_google():
 
 if __name__ == '__main__':
     main()
-
-#while True:
-#    send('cpu_percent value=%s' % psutil.cpu_percent())
-#    send('mem_available value=%s' % psutil.virtual_memory().available)
-#    ping_result = subprocess.check_output(['ping', '-c', '1', 'google.com']).decode()
-#    ping_time = ping_result.split('\n')[4].split('/')[4]
-#    send('google.ping_time value=%s' % ping_time)
-#    sleep(TIME)
