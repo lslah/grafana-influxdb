@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+    grafana:
+        image: grafana/grafana
+        volumes:
+            - grafana-volume:/var/lib/grafana
+        ports:
+            - 3000:3000
+        links:
+            - influxdb
+
+    influxdb:
+        image: tutum/influxdb
+        volumes:
+            - influxdb-volume:/data
+        environment:
+            - PRE_CREATE_DB="wadus"
+        ports:
+            - 8083:8083
+    gathering:
+        build: gathering
+        volumes:
+            - ./gathering/:/home/py/gathering
+        command: ["python", "/home/py/mem.py"]
+        links:
+            - influxdb
+volumes:
+    grafana-volume:
+    influxdb-volume:
