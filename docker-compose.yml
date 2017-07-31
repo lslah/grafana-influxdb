@@ -25,9 +25,6 @@ services:
             - INFLUXDB_DB
         volumes:
             - ./gathering/:/home/py/gathering
-        command: ["python", "/home/py/mem.py"]
-        links:
-            - influxdb
 volumes:
     grafana-volume:
     influxdb-volume:
