@@ -7,7 +7,15 @@ services:
         ports:
             - 3000:3000
         links:
-            - influxdb
+            - prometheus
+
+    prometheus:
+        image: prom/prometheus
+        volumes:
+            - prometheus-volume:/prometheus
+            - ./prometheus:/etc/prometheus
+        ports:
+            - 9090:9090
 
     influxdb:
         image: tutum/influxdb
@@ -28,3 +36,4 @@ services:
 volumes:
     grafana-volume:
     influxdb-volume:
+    prometheus-volume:
